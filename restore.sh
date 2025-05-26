@@ -1,20 +1,20 @@
 #!/bin/bash
 
-echo "📦 建立正確的 volume..."
-docker volume create eudai_open_webui_volume
-docker volume create eudai_searxng_volume
+echo "🔁 Creating volumes..."
+docker volume create open_webui_volume
+docker volume create searxng_volume
 
-echo "📂 還原 open_webui_volume 到 eudai_open_webui_volume..."
+echo "📦 Restoring open_webui_volume..."
 docker run --rm \
-  -v eudai_open_webui_volume:/data \
+  -v open_webui_volume:/data \
   -v "$(pwd)/backup":/backup \
-  ubuntu tar -xvzf /backup/open_webui_volume.tar.gz -C /data
+  ubuntu tar -xzvf /backup/open_webui_volume.tar.gz -C /data
 
-echo "📂 還原 searxng_volume 到 eudai_searxng_volume..."
+echo "📦 Restoring searxng_volume..."
 docker run --rm \
-  -v eudai_searxng_volume:/data \
+  -v searxng_volume:/data \
   -v "$(pwd)/backup":/backup \
-  ubuntu tar -xvzf /backup/searxng_volume.tar.gz -C /data
+  ubuntu tar -xzvf /backup/searxng_volume.tar.gz -C /data
 
-echo "🚀 啟動服務..."
+echo "🚀 Starting containers..."
 docker compose up -d
