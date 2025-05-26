@@ -130,23 +130,7 @@ backup/*.tar.gz filter=lfs diff=lfs merge=lfs -text
 
 ---
 
-## 📤 Commit & Push
 
-```bash
-git add .
-git commit -m "✅ Full EudAI snapshot with volumes + compose + Ollama"
-git push -u origin main
-```
-
----
-
-## 📌 GitHub Release (Optional)
-
-- Tag a release (e.g., `v0.5.4-snapshot`)
-- Use releases for reproducible builds
-- Git LFS ensures volume snapshots are tracked correctly
-
----
 
 ## ℹ️ Requirements
 
